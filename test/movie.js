@@ -22,7 +22,7 @@ describe('Movies', () => {
         };
 
         chai.request(app)
-            .post('/api/movies')
+            .post('/movies')
             .send(movie)
             .end((err,res) =>{
                 res.should.have.status(201);
@@ -36,7 +36,7 @@ describe('Movies', () => {
             Year: "2001"
         };
         chai.request(app)
-            .post('/api/movies')
+            .post('/movies')
             .send(movie)
             .end((err,res) =>{
                 res.should.have.status(404);
@@ -53,7 +53,7 @@ describe('Movies', () => {
         };
 
         chai.request(app)
-            .post('/api/movies')
+            .post('/movies')
             .send(movie)
             .end((err,res) =>{
                 res.should.have.status(409);
@@ -69,7 +69,7 @@ describe('Movies', () => {
     describe('/GET movies', () =>{
         it('it should GET all the movies',(done) =>{
             chai.request(app)
-                .get('/api/movies')
+                .get('/movies')
                 .end((err,res) =>{
                     res.should.have.status(200);
                     res.body.should.be.a('array');

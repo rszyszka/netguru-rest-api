@@ -13,8 +13,8 @@ let id;
 
 describe('Comments', () => {
     before((done) => {
-        Comment.remove();
-        Movie.remove();
+        Comment.remove().then();
+        Movie.remove().then();
         Movie.create({Title: "Hello"})
             .then((res)=>{
             id = res.id;
@@ -25,7 +25,7 @@ describe('Comments', () => {
     describe('/GET Comments',()=>{
         it('it should GET all comments',(done)=>{
             chai.request(app)
-                .get('/api/comments')
+                .get('/comments')
                 .end((err,res)=>{
                     res.should.have.status(200);
                     res.body.should.be.a('array');
@@ -35,7 +35,7 @@ describe('Comments', () => {
 
         it('it should GET comments on specified movie',(done)=>{
             chai.request(app)
-                .get('/api/comments')
+                .get('/comments')
                 .query({id: id})
                 .end((err,res)=>{
                     res.should.have.status(200);
@@ -52,7 +52,7 @@ describe('Comments', () => {
                 text: 'Touching'
             };
             chai.request(app)
-                .post('/api/comments')
+                .post('/comments')
                 .send(req)
                 .end((err,res)=>{
                     res.should.have.status(201);
@@ -65,7 +65,7 @@ describe('Comments', () => {
                 text: 'Touching'
             };
             chai.request(app)
-                .post('/api/comments')
+                .post('/comments')
                 .send(req)
                 .end((err,res)=>{
                     res.should.have.status(404);
@@ -81,7 +81,7 @@ describe('Comments', () => {
                 text: 'Touching'
             };
             chai.request(app)
-                .post('/api/comments')
+                .post('/comments')
                 .send(req)
                 .end((err,res)=>{
                     res.should.have.status(404);
@@ -96,7 +96,7 @@ describe('Comments', () => {
                 movie: id
             };
             chai.request(app)
-                .post('/api/comments')
+                .post('/comments')
                 .send(req)
                 .end((err,res)=>{
                     res.should.have.status(400);
