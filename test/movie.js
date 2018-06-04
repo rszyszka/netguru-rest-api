@@ -10,7 +10,8 @@ chai.use(chaiHttp);
 
 describe('Movies', () => {
     before((done) => {
-        Movie.remove({}, (err) => {
+        Movie.remove().catch();
+        Movie.create({Title: 'American Sniper', Year: '2014'},(err)=>{
             done();
         });
     });
@@ -76,6 +77,17 @@ describe('Movies', () => {
                     done();
                 })
     });
+
+        it('it should GET movies from given year range',(done) =>{
+            chai.request(app)
+                .get('/movies/2010/2015')
+                .end((err,res)=>{
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(1);
+                    done();
+                })
+                
+        })
 });
 
 });

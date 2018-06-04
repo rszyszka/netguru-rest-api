@@ -36,7 +36,20 @@ export const fetchMovie = (req, res, next) => {
 
 export const index = (req, res, next) => {
     return Movie.find()
+        .sort({Title: 1})
         .then((movies) => movies.map((movie) => movie.view('list')))
         .then(response(res))
         .catch(next)
+};
+
+export const searchByYear = (req, res, next) => {
+    const minYear = req.params.minYear;
+    const maxYear = req.params.maxYear;
+    Movie.find({
+        'Year': {$lte:maxYear, $gte: minYear}
+    })
+    .sort({Title: 1})
+    .then((movies) => movies.map((movie) => movie.view('list')))
+    .then(response(res))
+    .catch(next)
 };
