@@ -10,7 +10,8 @@
 
 * Routes examples:  
 `/movies`  
-`/comments`  
+`/movies/2010/2016/`  
+`/comment`  
 `/comments?id=5b14535eb08bd60014c94606`
 
 Aplication available online at:  
