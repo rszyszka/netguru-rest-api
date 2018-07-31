@@ -11,7 +11,7 @@
 * Routes examples:  
 `/movies`  
 `/movies/2010/2016/`  
-`/comment`  
+`/comments`  
 `/comments?id=5b14535eb08bd60014c94606`
 
 Aplication available online at:  
