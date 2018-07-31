@@ -14,5 +14,5 @@
 `/comments`  
 `/comments?id=5b14535eb08bd60014c94606`
 
-Aplication available online at:  
+Application available online at:  
 https://netguru-rest-api.herokuapp.com/
