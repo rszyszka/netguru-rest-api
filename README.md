@@ -6,7 +6,7 @@
 3. Run your localhost mongodb
 4. Run `yarn start`
 
-* If you want run tests make `yarn test`
+* If you want to run tests make `yarn test`
 
 * Routes examples:  
 `/movies`  
